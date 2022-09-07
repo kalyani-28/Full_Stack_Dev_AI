@@ -40,4 +40,4 @@ This is an AI project which involves deep learning, computer vision and rule-bas
 -   [Image Classification Tutorial](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/transfer_learning_with_hub.ipynb)
 
 ### The First Release:
--   **Lyndon Renaud, Ian Straatman and Hong Qian Zhao**  have sucessfully complete the first part of the project. 
+-   **Lyndon Renaud, Ian Straatman and Hong Qian Zhao**  have sucessfully completed the first part of the project. 

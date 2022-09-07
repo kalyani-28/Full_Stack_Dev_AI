@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+opencv-python = "*"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+python-multipart = "*"
+jinja2 = "*"
+google-cloud-vision = "*"
+
+[dev-packages]
+autopep8 = "*"
+
+[requires]
+python_version = "3.9"

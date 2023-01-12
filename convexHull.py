@@ -90,8 +90,8 @@ def getROI(img, rectangles: List):
         tmp = {
             "xmin": x,
             "ymin": y,
-            "xmax": w,
-            "ymax": h,
+            "xmax": x+w,
+            "ymax": y+h,
             "path": path.format(i)
         }
         obj[i] = tmp

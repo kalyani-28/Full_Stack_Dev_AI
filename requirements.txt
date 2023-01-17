@@ -12,6 +12,7 @@ cachetools==5.0.0; python_version ~= '3.7'
 certifi==2021.10.8
 charset-normalizer==2.0.12; python_version >= '3'
 click==8.0.4; python_version >= '3.6'
+editdistance==0.6.2
 fastapi==0.75.0
 google-api-core[grpc]==2.7.1; python_version >= '3.6'
 google-auth==2.6.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'
@@ -23,22 +24,31 @@ h11==0.13.0; python_version >= '3.6'
 httptools==0.4.0
 idna==3.3; python_version >= '3.5'
 jinja2==3.0.3
+lmdb==1.4.0
 markupsafe==2.1.0; python_version >= '3.7'
+matplotlib==3.6.3
 numpy==1.22.3; python_version >= '3.8'
 opencv-python==4.5.5.64
 proto-plus==1.20.3; python_version >= '3.6'
 protobuf==3.19.4; python_version >= '3.5'
+path==16.6.0
 pyasn1-modules==0.2.8
 pyasn1==0.4.8
 pydantic==1.9.0; python_full_version >= '3.6.1'
+pexpect==4.8.0 
+ptyprocess==0.7.0
+pyparsing==3.0.9
 python-dotenv==0.19.2
 python-multipart==0.0.5
+torch==1.13.0
+torchvision==0.14.0
 pyyaml==6.0
 requests==2.27.1; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'
 rsa==4.8; python_version >= '3.6'
 six==1.16.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'
 sniffio==1.2.0; python_version >= '3.5'
 starlette==0.17.1; python_version >= '3.6'
+tensorflow==2.11.0
 typing-extensions==4.1.1; python_version >= '3.6'
 urllib3==1.26.8; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'
 uvicorn[standard]==0.17.6

@@ -52,7 +52,7 @@ def getHulls(contours: List):
 
 def filterTextBoxes(hulls: List):
     """Partition convex hulls into text labels and text boxes"""
-    MIN_AREA = 1000
+    MIN_AREA = 3000
     textBoxes = []
     other = []
     for hull in hulls:
@@ -74,13 +74,14 @@ def boundingBox(contours: List):
 def getROI(img, rectangles: List):
     obj = {}
     image = img.copy()
-
+    height, width, channels = image.shape
+    
     # iterate through contours
     for i, c in enumerate(rectangles):
-        x = c[0]
-        y = c[1]
-        w = c[2] 
-        h = c[3]
+        x = c[0] if c[0] > 0 else 0
+        y = c[1] if c[1] > 0 else 0
+        w = c[2] if c[2] + x < width else width - x
+        h = c[3] if c[3] + y < height else height - y
 
         # for each contour found, crop the image and save a copy based on bounding box
         ROI = image[y:y+h, x:x+w]
@@ -106,12 +107,14 @@ def mergeRects(img, rects):
 
     # merge threshold
     xThr = 30
-    yThr = 20
+    yThr = 30
 
 
     # add padding to final bounding boxes in case edge letters are cut
     xpadding = 10
     ypadding = 10
+
+    minArea = 1000
     
     for _ in rects:
         rectsUsed.append(False)
@@ -171,10 +174,9 @@ def mergeRects(img, rects):
                     break
 
             # No more merge candidates possible, accept current rect
-            # Use the x threshold to filter out small area rectangles
-            # if (currxMin + xThr < currxMax):
-            acceptedRects.append([currxMin - xpadding, curryMin - ypadding, currxMax - currxMin + xpadding, curryMax - curryMin + ypadding])
-    
+            area = ((currxMax - currxMin) * (curryMax - curryMin))  
+            if (area >= minArea):
+                acceptedRects.append([currxMin - xpadding, curryMin - ypadding, currxMax - currxMin + xpadding, curryMax - curryMin + ypadding])
     return acceptedRects
 
 def findAllLabels():

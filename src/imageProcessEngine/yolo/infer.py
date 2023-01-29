@@ -4,7 +4,7 @@ import cv2
 import sys
 import json
 
-modelPath = 'model/best.pt'
+modelPath = 'yolo/model/best.pt' # must modify this to model/best.py if trying to run in isolation
 
 # retrieve yolo model
 # training instructions in main readme
@@ -26,7 +26,7 @@ def infer(imgFile):
     parsed = json.loads(results.pandas().xyxy[0].to_json(orient ='index'))
     print(json.dumps(parsed, indent=4))
 
-    return json
+    return parsed
 
 if __name__ == "__main__":
     imgFile = sys.argv[1]

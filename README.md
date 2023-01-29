@@ -6,7 +6,7 @@ This is an AI project which involves deep learning, computer vision and rule-bas
 
 ### Dependencies
 
--   python 3.6+
+-   python 3.8+
 -   google vision api
 
 ### Instructions

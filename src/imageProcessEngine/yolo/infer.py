@@ -2,9 +2,14 @@ import torch
 import cv2
 
 import sys
-import json
+sys.path.append('..') # add parent directory to path to import configs
 
-modelPath = 'yolo/model/best.pt' # must modify this to model/best.py if trying to run in isolation
+import json
+import os
+
+from configs.definitions import ROOT_DIR
+
+modelPath = os.path.join(ROOT_DIR, 'yolo/model/best.pt')
 
 # retrieve yolo model
 # training instructions in main readme
@@ -12,7 +17,7 @@ def getModel():
     return torch.hub.load('ultralytics/yolov5', 'custom', modelPath)
 
 # return objects detected by yolo in formated json
-def infer(imgFile):
+def run(imgFile):
     # run model
     model = getModel()
     im = imgFile
@@ -31,4 +36,4 @@ def infer(imgFile):
 if __name__ == "__main__":
     imgFile = sys.argv[1]
     print(imgFile)
-    infer(imgFile)
+    run(imgFile)

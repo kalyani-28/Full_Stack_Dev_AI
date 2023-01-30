@@ -1,11 +1,11 @@
-import yolo.infer as infer
+from yolo import infer
 import Image
 import mapping
 
 import sys
 
 def run(imgPath):
-    elements = infer.infer(imgPath)
+    elements = infer.run(imgPath)
 
     # todo: add code to grab content from HTR
     img = Image.Image(imgPath, elements, {})

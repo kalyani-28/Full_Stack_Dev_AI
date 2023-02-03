@@ -5,7 +5,8 @@ from typing import List, Tuple
 import numpy as np
 import tensorflow as tf
 
-from dataloader_iam import Batch
+from htr.src.dataloader_iam import Batch
+from configs.definitions import ROOT_DIR
 
 # Disable eager mode
 tf.compat.v1.disable_eager_execution()
@@ -26,6 +27,10 @@ class Model:
                  decoder_type: str = DecoderType.BestPath,
                  must_restore: bool = False,
                  dump: bool = False) -> None:
+
+        # allow multiple iterations of model
+        tf.compat.v1.reset_default_graph()
+        
         """Init model: add CNN, RNN and CTC and initialize TF."""
         self.dump = dump
         self.char_list = char_list
@@ -153,7 +158,7 @@ class Model:
         sess = tf.compat.v1.Session()  # TF session
 
         saver = tf.compat.v1.train.Saver(max_to_keep=1)  # saver saves model to file
-        model_dir = '../model/'
+        model_dir = os.path.join(ROOT_DIR, 'htr/model')
         latest_snapshot = tf.train.latest_checkpoint(model_dir)  # is there a saved model?
 
         # if model must be restored (for inference), there must be a snapshot

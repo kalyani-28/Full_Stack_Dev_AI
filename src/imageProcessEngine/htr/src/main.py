@@ -6,16 +6,19 @@ import cv2
 import editdistance
 from path import Path
 
-from dataloader_iam import DataLoaderIAM, Batch
-from model import Model, DecoderType
-from preprocessor import Preprocessor
+import os
+from configs.definitions import ROOT_DIR
+
+from htr.src.dataloader_iam import DataLoaderIAM, Batch
+from htr.src.model import Model, DecoderType
+from htr.src.preprocessor import Preprocessor
 
 
 class FilePaths:
     """Filenames and paths to data."""
-    fn_char_list = '../model/charList.txt'
-    fn_summary = '../model/summary.json'
-    fn_corpus = '../data/corpus.txt'
+    fn_char_list = os.path.join(ROOT_DIR, 'htr/model/charList.txt')
+    fn_summary = os.path.join(ROOT_DIR, 'htr/model/summary.json')
+    fn_corpus = os.path.join(ROOT_DIR, 'htr//data/corpus.txt')
 
 
 def get_img_height() -> int:
@@ -124,7 +127,7 @@ def validate(model: Model, loader: DataLoaderIAM, line_mode: bool) -> Tuple[floa
     return char_error_rate, word_accuracy
 
 
-def infer(model: Model, fn_img: Path) -> None:
+def infer(model: Model, fn_img: Path) -> Tuple[str, str]:
     """Recognizes text in image provided by file path."""
     img = cv2.imread(fn_img, cv2.IMREAD_GRAYSCALE)
     assert img is not None
@@ -136,6 +139,7 @@ def infer(model: Model, fn_img: Path) -> None:
     recognized, probability = model.infer_batch(batch, True)
     print(f'Recognized: "{recognized[0]}"')
     print(f'Probability: {probability[0]}')
+    return recognized[0], probability[0]
 
 
 def parse_args() -> argparse.Namespace:
@@ -155,7 +159,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main():
+def initHTR():
     """Main function."""
 
     # parse arguments and set CTC decoder
@@ -193,8 +197,8 @@ def main():
     # infer text on test image
     elif args.mode == 'infer':
         model = Model(char_list_from_file(), decoder_type, must_restore=True, dump=args.dump)
-        infer(model, args.img_file)
+        return infer(model, args.img_file)
 
 
 if __name__ == '__main__':
-    main()
+    initHTR()

@@ -1,14 +1,22 @@
-from yolo import infer
 import Image
 import mapping
 
 import sys
 
-def run(imgPath):
-    elements = infer.run(imgPath)
+def getElements(imgPath):
+    from yolo import infer
+    return infer.run(imgPath)
 
-    # todo: add code to grab content from HTR
-    img = Image.Image(imgPath, elements, {})
+def getLabels(imgPath):
+    from htr import textSegment
+    return textSegment.processImage(imgPath)
+
+def run(imgPath):
+    elements = getElements(imgPath)
+
+    labels = getLabels(imgPath)
+
+    img = Image.Image(imgPath, elements, labels)
 
     img.setMapping(mapping.mapper(img))
     

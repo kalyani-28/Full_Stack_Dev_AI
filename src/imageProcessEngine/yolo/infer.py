@@ -7,7 +7,7 @@ sys.path.append('..') # add parent directory to path to import configs
 import json
 import os
 
-from configs.definitions import ROOT_DIR
+from imageProcessEngine.configs.definitions import ROOT_DIR
 
 modelPath = os.path.join(ROOT_DIR, 'yolo/model/best.pt')
 

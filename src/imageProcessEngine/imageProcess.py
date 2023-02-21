@@ -1,14 +1,14 @@
-import Image
-import mapping
+import imageProcessEngine.Image as Image
+import imageProcessEngine.mapping as mapping
 
 import sys
 
 def getElements(imgPath):
-    from yolo import infer
+    from imageProcessEngine.yolo import infer
     return infer.run(imgPath)
 
 def getLabels(imgPath):
-    from htr import textSegment
+    from imageProcessEngine.htr import textSegment
     return textSegment.processImage(imgPath)
 
 def run(imgPath):

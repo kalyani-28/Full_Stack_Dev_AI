@@ -12,6 +12,8 @@ from starlette.responses import FileResponse
 from apiGenerator.apiGenerator import generateApi
 from textbox_label.textbox_label import getTextbox_Labels
 
+from imageProcessEngine import imageProcess
+
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "../gcp-auth.json"
 
 
@@ -32,12 +34,18 @@ def main():
 
 @app.post("/generateApp")
 async def main(file: UploadFile):
-    data = await file.read()
-    coords = getTextbox_Labels(data)
-    labels = [l[4] for l in sorted(coords, key=lambda x: x[1])]
-    formElements = {k: {"label": l, "type": "text"}
-                    for k, l in enumerate(labels)}
-    generateApi([formElements])
+    src = os.path.abspath("../results/source.png")
+    with open(src, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    # data = await file.read()
+    # coords = getTextbox_Labels(data)
+    # labels = [l[4] for l in sorted(coords, key=lambda x: x[1])]
+    # formElements = {k: {"label": l, "type": "text"}
+    #                 for k, l in enumerate(labels)}
+    # generateApi([formElements])
+    img = imageProcess.run(src)
+
+    generateApi([img.mapping])
 
     zipFilename = "app.zip"
     s = io.BytesIO()

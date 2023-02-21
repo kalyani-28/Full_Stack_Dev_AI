@@ -5,8 +5,8 @@ from typing import List, Tuple
 import numpy as np
 import tensorflow as tf
 
-from htr.src.dataloader_iam import Batch
-from configs.definitions import ROOT_DIR
+from imageProcessEngine.htr.src.dataloader_iam import Batch
+from imageProcessEngine.configs.definitions import ROOT_DIR
 
 # Disable eager mode
 tf.compat.v1.disable_eager_execution()
@@ -20,7 +20,7 @@ class DecoderType:
 
 
 class Model:
-    """Minimalistic TF model for HTR."""
+    """Minimalistic TF model for imageProcessEngine.htr."""
 
     def __init__(self,
                  char_list: List[str],

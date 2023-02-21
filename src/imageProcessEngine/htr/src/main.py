@@ -7,11 +7,11 @@ import editdistance
 from path import Path
 
 import os
-from configs.definitions import ROOT_DIR
+from imageProcessEngine.configs.definitions import ROOT_DIR
 
-from htr.src.dataloader_iam import DataLoaderIAM, Batch
-from htr.src.model import Model, DecoderType
-from htr.src.preprocessor import Preprocessor
+from imageProcessEngine.htr.src.dataloader_iam import DataLoaderIAM, Batch
+from imageProcessEngine.htr.src.model import Model, DecoderType
+from imageProcessEngine.htr.src.preprocessor import Preprocessor
 
 
 class FilePaths:

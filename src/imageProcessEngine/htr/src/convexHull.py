@@ -6,7 +6,7 @@ import cv2
 from cv2 import LINE_AA
 import numpy as np
 import json
-from configs.definitions import ROOT_DIR
+from imageProcessEngine.configs.definitions import ROOT_DIR
 
 path = os.path.join(ROOT_DIR, 'results/ROI{0}.png')
 filename = 'ROI.json'

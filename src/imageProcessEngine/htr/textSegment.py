@@ -1,8 +1,8 @@
 import sys
 import json
 
-import htr.src.convexHull as convexHull
-from htr.src.main import initHTR
+import imageProcessEngine.htr.src.convexHull as convexHull
+from imageProcessEngine.htr.src.main import initHTR
 
 import re
 regex = ".*\w+.*"

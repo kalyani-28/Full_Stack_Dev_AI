@@ -14,6 +14,8 @@ from textbox_label.textbox_label import getTextbox_Labels
 
 from imageProcessEngine import imageProcess
 
+from datetime import datetime
+
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "../gcp-auth.json"
 
 
@@ -34,7 +36,17 @@ def main():
 
 @app.post("/generateApp")
 async def main(file: UploadFile):
-    src = os.path.abspath("../results/source.png")
+    
+    now = datetime.now()
+    time_stamp = now.strftime("%H:%M:%S")
+    path = "../results/"
+    extension = ".png"
+	
+    path += time_stamp
+    path += extension
+
+    src = os.path.abspath(path)
+    # src = os.path.abspath("../results/source.png")
     with open(src, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     # data = await file.read()

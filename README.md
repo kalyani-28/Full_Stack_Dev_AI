@@ -7,11 +7,11 @@ This is an AI project which involves deep learning, computer vision and rule-bas
 ### Dependencies
 
 -   python 3.8+
--   google vision api
+-   ~~google vision api~~
 
 ### Instructions
 
-1. Copy google cloud key to project root with name gcp-auth.json
+1. ~~Copy google cloud key to project root with name gcp-auth.json~~
 2. `$ pip install -r requirements.txt`
 3. `$ cd src && uvicorn app:app`
 4. Access app frontend on local port [8000](http://localhost:8000)
@@ -34,10 +34,22 @@ This is an AI project which involves deep learning, computer vision and rule-bas
 ### OCR
 
 -   [Text processing and removal tutorial](https://towardsdatascience.com/remove-text-from-images-using-cv2-and-keras-ocr-24e7612ae4f4)
+-   [Handwritten Text Recognition](https://towardsdatascience.com/build-a-handwritten-text-recognition-system-using-tensorflow-2326a3487cd5)
+-   [SimpleHTR](https://github.com/githubharald/SimpleHTR)
 
 ### Tensorflow
 
 -   [Image Classification Tutorial](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/transfer_learning_with_hub.ipynb)
 
+## You Only Look Once Object Detection (YOLO)
+
+-   [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640)
+-   [Yolov5 by Ultralytics](https://github.com/ultralytics/yolov5)
+-   [Train Yolov5 Model](https://colab.research.google.com/drive/1uTHZAZgxSJF0kwebMIc3Ln6LfTtQaIDm?usp=sharing)
+-   [Dataset](https://universe.roboflow.com/4990fullstackai/hand-drawn-html-form-segmentation-and-detection/dataset/9)
+
 ### The First Release:
--   **Lyndon Renaud, Ian Straatman and Hong Qian Zhao**  have sucessfully completed the first part of the project. 
+-   **Lyndon Renaud, Ian Straatman and Hong Qian Zhao**  have sucessfully completed the first part of the project.
+
+### The Second Release:
+-   **Ben Sutherland, AJ Jraige and Jonathan Doyle**  have completed the second part of the project. 

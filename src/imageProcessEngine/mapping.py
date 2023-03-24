@@ -2,11 +2,15 @@ from math import sqrt
 import sys
 import imageProcessEngine.Image as Image
 
+# distance between points
 def getDistance(point1, point2) -> int:
     return sqrt(pow(point2[0] - point1[0], 2) + pow(point2[1] - point1[1], 2))
-    
+
+# rule to determine if label is valid for a text box
+# label center must to the top left of text box
 def skipRulesInputText(element, label):
     return not label["xmin"] < round(element["xmax"]) or not label["ymin"] < round(element["ymax"])
+
 def naiveMapping(img: Image) -> dict:
     elements = img.elements.copy()
     labels = img.labels.copy()
@@ -29,24 +33,25 @@ def naiveMapping(img: Image) -> dict:
             if (skipRulesInputText(element, label)):
                 continue
 
-            if (distance < result):
+            if (distance < result): # find label with mininum distance and valid based on rule above
                 result = distance
                 index = j
 
-        mapping[ind] = {}   
+        mapping[ind] = {}
+
         if (img.elements[i]["name"] == "input-text"):
             mapping[ind]["type"] = "text"
         
-        mapping[ind]["label"] = labels[index]["word"]
+        mapping[ind]["label"] = labels[index]["word"] # add label and box to mapping object
         
-        del labels[index]
+        del labels[index] # each label should only be used once
 
     return mapping
 
+# not implemented
 def modelMapping(img: Image) -> dict:
     return {}
 
-# todo: add mapping between cd srimg.labels and img.elements
 def mapper(img: Image) -> dict:
     return naiveMapping(img)
 

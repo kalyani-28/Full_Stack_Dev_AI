@@ -1,5 +1,5 @@
 # You Only Look Once Object Detection (YOLOv5)
-The method used for training AI to detect HTML objects in an image. Please check [main READEME](https://github.com/kalyani-28/Full_Stack_Dev_AI/blob/main/README.md) for resources to learn more.
+The method used for training AI to detect HTML objects in an image. Please check [main README](https://github.com/kalyani-28/Full_Stack_Dev_AI/blob/main/README.md) for resources to learn more.
 
 ## Training and Updating Model
 1. [Dataset](https://universe.roboflow.com/4990fullstackai/hand-drawn-html-form-segmentation-and-detection)
